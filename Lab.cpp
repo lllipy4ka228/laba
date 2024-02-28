@@ -1,26 +1,27 @@
 #include <iostream>
 #include <string>
+#include <Windows.h>
 
-std::string generate_pattern(int n) {
-    std::string pattern = "";
-    for (int i = 0; i < n; ++i) {
-        pattern += std::string(n - i - 1, ' ');
-        for (int j = 0; j <= i; ++j) {
-            pattern += std::to_string(j);
+using namespace std;
+
+void printPattern(int size) {
+    for (int i = size; i > 0; i--) {
+        cout << string(size - i, ' ') << string(i, '*');
+        for (int j = i; j > 0; j--) {
+            cout << j;
         }
-        pattern += std::string(i, std::to_string(i).front());
-        pattern += '\n';
+        cout << endl;
     }
-    return pattern;
 }
 
 int main() {
-    int num;
-    std::cout << "Enter Number: ";
-    std::cin >> num;
 
-    int lines = (num % 5 == 0) ? num : num % 5 + 5;
-    std::cout << generate_pattern(lines);
+    SetConsoleOutputCP(1251);
 
+    int size;
+    cout << "Ââåä³òü ê³ëüê³ñòü ë³í³é: ";
+    cin >> size;
+    printPattern(size);
     return 0;
 }
+
